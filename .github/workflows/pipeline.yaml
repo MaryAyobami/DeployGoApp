@@ -15,7 +15,7 @@ jobs:
         with:
           username: maryayobami
           password: ${{ secrets.DOCKER_TOKEN }}
-          repository: jhonthan/goapp-argocd
+          repository: maryayobami/goserver
           tags: ${{ github.sha }}, latest
   
   deploy:
@@ -34,7 +34,7 @@ jobs:
       - name: update k8s
         run: |
           cd k8s
-          kustomize edit set image goapp=jhonthan/goapp-argocd:${{ github.sha }}
+          kustomize edit set image goapp=maryayobami/goserver:${{ github.sha }}
           cat kustomization.yaml
 
       - name: commit
